@@ -1,29 +1,31 @@
 {% extends 'events/base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<h2 class="text-2xl md:text-3xl font-semibold section-heading">Event Analytics</h2>
+<h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 section-heading mb-8">Event Analytics</h2>
 {% if summary %}
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white p-4 rounded-lg shadow text-center">
-            <h3 class="font-semibold text-sm md:text-base mb-2">Total Events</h3>
-            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.total_events }}</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-teal-100 hover:scale-105">
+            <h3 class="font-semibold text-base md:text-lg text-gray-700 mb-3">Total Events</h3>
+            <p class="text-3xl md:text-4xl font-extrabold text-teal-700">{{ summary.total_events }}</p>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow text-center">
-            <h3 class="font-semibold text-sm md:text-base mb-2">Unique Categories</h3>
-            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.unique_categories }}</p>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-teal-100 hover:scale-105">
+            <h3 class="font-semibold text-base md:text-lg text-gray-700 mb-3">Unique Categories</h3>
+            <p class="text-3xl md:text-4xl font-extrabold text-teal-700">{{ summary.unique_categories }}</p>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow text-center">
-            <h3 class="font-semibold text-sm md:text-base mb-2">Upcoming Events</h3>
-            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.upcoming_events }}</p>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-teal-100 hover:scale-105">
+            <h3 class="font-semibold text-base md:text-lg text-gray-700 mb-3">Upcoming Events</h3>
+            <p class="text-3xl md:text-4xl font-extrabold text-teal-700">{{ summary.upcoming_events }}</p>
         </div>
     </div>
     {% if plot_url %}
         <div class="text-center">
-            <h3 class="text-lg md:text-xl font-bold mb-4">Count</h3>
-            <img src="{{ plot_url }}" alt="Event Category Distribution" class="w-full max-w-md mx-auto">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Count</h3>
+            <div class="bg-white p-4 rounded-xl shadow-lg border border-teal-100">
+                <img src="{{ plot_url }}" alt="Event Category Distribution" class="w-full max-w-lg mx-auto rounded-lg">
+            </div>
         </div>
     {% endif %}
 {% else %}
-    <p class="text-gray-600 text-sm md:text-base">No events available. <a href="{% url 'event_create' %}" class="text-green-500 hover:underline">Add an event</a> to see analytics.</p>
+    <p class="text-gray-600 text-base md:text-lg">No events available. <a href="{% url 'event_create' %}" class="text-orange-400 hover:text-orange-500 font-medium transition-colors duration-200">Add an event</a> to see analytics.</p>
 {% endif %}
 {% endblock %}

@@ -1,11 +1,16 @@
 {% extends 'events/base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
-<h2 class="text-2xl md:text-3xl font-semibold section-heading">{{ title }}</h2>
-<form method="post" class="space-y-4 max-w-md">
+<h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 section-heading mb-8">{{ title }}</h2>
+<form method="post" class="space-y-6 max-w-lg">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md text-sm md:text-base">Save Category</button>
+    {% if form.errors %}
+        <div class="text-orange-400 font-medium">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <button type="submit" class="bg-gradient-to-r from-teal-700 to-orange-400 text-white px-6 py-3 rounded-lg font-medium hover:from-teal-800 hover:to-orange-500 transition-all duration-300 w-full sm:w-auto">Save Category</button>
 </form>
-<a href="{% url 'event_list' %}" class="bg-gray-500 text-white px-4 py-2 rounded-md mt-4 inline-block text-sm md:text-base">Cancel</a>
+<a href="{% url 'event_list' %}" class="inline-block mt-4 bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors duration-300">Cancel</a>
 {% endblock %}

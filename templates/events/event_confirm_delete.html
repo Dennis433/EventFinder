@@ -1,11 +1,11 @@
 {% extends 'events/base.html' %}
 {% block title %}Delete Event{% endblock %}
 {% block content %}
-<h2 class="text-2xl md:text-3xl font-semibold section-heading">Delete Event</h2>
-<p class="text-gray-600 text-sm md:text-base">Are you sure you want to delete "{{ event.title }}"?</p>
+<h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 section-heading mb-8">Delete Event</h2>
+<p class="text-gray-600 text-base md:text-lg mb-6">Are you sure you want to delete "{{ event.title }}"?</p>
 <form method="post" class="mt-4">
     {% csrf_token %}
-    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md text-sm md:text-base">Confirm Delete</button>
-    <a href="{% url 'event_list' %}" class="bg-gray-500 text-white px-4 py-2 rounded-md ml-2 text-sm md:text-base">Cancel</a>
+    <button type="submit" class="bg-orange-400 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-500 transition-colors duration-300">Confirm Delete</button>
+    <a href="{% url 'event_list' %}" class="bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors duration-300 ml-4">Cancel</a>
 </form>
 {% endblock %}
