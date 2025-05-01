@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-3l33ko5s!r$7=@dqya^2=fd4i*2$1_cxuz2^*gnd!@#14btfw+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eventfinder-dennis.herokuapp.com', 'localhost','127.0.0.1']
+
 
 
 # Application definition
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'events.apps.EventsConfig'
+    'events.apps.EventsConfig',
     'django.contrib.staticfiles',
 ]
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'event_finder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +124,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

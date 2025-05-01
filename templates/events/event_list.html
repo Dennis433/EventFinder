@@ -1,0 +1,30 @@
+{% extends 'events/base.html' %}
+{% block title %}Events{% endblock %}
+{% block content %}
+<h2 class="text-2xl md:text-3xl font-semibold section-heading">Community Events</h2>
+<form method="get" class="mb-6">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search events..." class="w-full md:w-1/2 p-2 border rounded-md text-sm md:text-base">
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md mt-2 md:mt-0 md:ml-2 text-sm md:text-base">Search</button>
+</form>
+<div class="mb-4">
+    <a href="{% url 'event_create' %}" class="bg-green-500 text-white px-4 py-2 rounded-md text-sm md:text-base">Add New Event</a>
+    <a href="{% url 'category_create' %}" class="bg-blue-500 text-white px-4 py-2 rounded-md ml-2 text-sm md:text-base">Add New Category</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+    {% for event in events %}
+        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+            <h3 class="text-lg md:text-xl font-semibold">{{ event.title }}</h3>
+            <p class="text-gray-600 text-sm md:text-base">{{ event.description|truncatewords:20 }}</p>
+            <p class="text-gray-600 text-sm md:text-base">Date: {{ event.date }}</p>
+            <p class="text-gray-600 text-sm md:text-base">Location: {{ event.location }}</p>
+            <p class="text-gray-600 text-sm md:text-base">Category: {{ event.category.name }}</p>
+            <div class="mt-2">
+                <a href="{% url 'event_edit' event.pk %}" class="text-green-500 hover:underline text-sm md:text-base">Edit</a>
+                <a href="{% url 'event_delete' event.pk %}" class="text-red-500 hover:underline text-sm md:text-base ml-4">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-gray-600 text-sm md:text-base">No events found. Try adding some!</p>
+    {% endfor %}
+</div>
+{% endblock %}

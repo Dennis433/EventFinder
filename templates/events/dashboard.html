@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="text-2xl md:text-3xl font-semibold section-heading">Event Analytics</h2>
+{% if summary %}
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="font-semibold text-sm md:text-base mb-2">Total Events</h3>
+            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.total_events }}</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="font-semibold text-sm md:text-base mb-2">Unique Categories</h3>
+            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.unique_categories }}</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow text-center">
+            <h3 class="font-semibold text-sm md:text-base mb-2">Upcoming Events</h3>
+            <p class="text-2xl md:text-3xl font-bold text-green-600">{{ summary.upcoming_events }}</p>
+        </div>
+    </div>
+    {% if plot_url %}
+        <div class="text-center">
+            <h3 class="text-lg md:text-xl font-bold mb-4">Count</h3>
+            <img src="{{ plot_url }}" alt="Event Category Distribution" class="w-full max-w-md mx-auto">
+        </div>
+    {% endif %}
+{% else %}
+    <p class="text-gray-600 text-sm md:text-base">No events available. <a href="{% url 'event_create' %}" class="text-green-500 hover:underline">Add an event</a> to see analytics.</p>
+{% endif %}
+{% endblock %}

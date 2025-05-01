@@ -5,7 +5,7 @@
 <form method="post" class="space-y-4 max-w-md">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md text-sm md:text-base">Save</button>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md text-sm md:text-base">Save Category</button>
 </form>
 <a href="{% url 'event_list' %}" class="bg-gray-500 text-white px-4 py-2 rounded-md mt-4 inline-block text-sm md:text-base">Cancel</a>
 {% endblock %}

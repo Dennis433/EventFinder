@@ -1,5 +1,5 @@
 from django.db import migrations
-from django.apps import AppConfig
+
 def create_default_categories_and_events(apps, schema_editor):
     Category = apps.get_model('events', 'Category')
     Event = apps.get_model('events', 'Event')
@@ -21,8 +21,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(create_default_categories_and_events),
     ]
-
-
-class EventsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'events'
